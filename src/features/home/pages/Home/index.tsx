@@ -42,22 +42,22 @@ const HomePageRaw: FC = () => {
     if (data) {
       let main: TpPanelLockUI | null = null;
       const locks = data.reduce<TpPanelLockUI[]>((panels, panel) => {
-        const buttons = panel.locks.reduce<TpPanelLockUI[]>((locks, lock) => {
-          if (lock.is_main_door) {
-            main = {
-              ...lock,
-              panel_id: panel.panel_id,
-            };
-          } else {
-            locks.push({
-              ...lock,
-              panel_id: panel.panel_id,
-            });
-          }
-          return locks;
-        }, []);
+        if (panel.locks) {
+          panel.locks.forEach((lock) => {
+            if (lock.is_main_door) {
+              panels.unshift({
+                ...lock,
+                panel_id: panel.panel_id,
+              });
+            } else {
+              panels.push({
+                ...lock,
+                panel_id: panel.panel_id,
+              });
+            }
+          });
+        }
 
-        panels = [...panels, ...buttons];
         return panels;
       }, []);
 
