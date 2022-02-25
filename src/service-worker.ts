@@ -89,9 +89,35 @@ self.addEventListener("push", (event) => {
   }
 });
 
+//PROD
+// self.addEventListener("notificationclick", (event) => {
+//   const { data } = event.notification;
+//   const url = `https://homeid/web/home/call?callUuid=${data.callUuid}&panel_id=${data.panelId}`;
+//   event.notification.close();
+//   event.waitUntil(
+//     self.clients
+//       .matchAll({
+//         type: "window",
+//       })
+//       .then(function (clientList: any) {
+//         for (var i = 0; i < clientList.length; i++) {
+//           var client = clientList[i];
+//           if (client.url.includes("homeid")) {
+//             client.focus();
+//             return client.navigate(url);
+//           }
+//         }
+//         if (self.clients.openWindow) {
+//           return self.clients.openWindow(url);
+//         }
+//       })
+//   );
+// });
+
+//DEV
 self.addEventListener("notificationclick", (event) => {
   const { data } = event.notification;
-  const url = `https://homeid/web/home/call?callUuid=${data.callUuid}&panel_id=${data.panelId}`;
+  const url = `http://localhost:3001/home/call?callUuid=${data.callUuid}&panel_id=${data.panelId}`;
   event.notification.close();
   event.waitUntil(
     self.clients
@@ -101,7 +127,7 @@ self.addEventListener("notificationclick", (event) => {
       .then(function (clientList: any) {
         for (var i = 0; i < clientList.length; i++) {
           var client = clientList[i];
-          if (client.url.includes("homeid")) {
+          if (client.url.includes("localhost:3001")) {
             client.focus();
             return client.navigate(url);
           }
