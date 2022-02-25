@@ -50,6 +50,8 @@ const AuthProviderRaw: FC<AuthProps> = (props) => {
     try {
       await logoutUser(user.user_id);
       setUser(default_user);
+      localStorage.removeItem("user");
+      localStorage.removeItem("user-settings");
     } catch (e) {
       console.warn("Logout user error");
     }
@@ -71,7 +73,10 @@ const AuthProviderRaw: FC<AuthProps> = (props) => {
       if (user.token) {
         (axios.defaults.headers as CustomHeaders)["Authorization"] = user.token;
       }
-      setUser(user);
+      setUser({
+        ...default_user,
+        ...user,
+      });
     }
 
     // (axios.defaults.headers as CustomHeaders)["Authorization"] =

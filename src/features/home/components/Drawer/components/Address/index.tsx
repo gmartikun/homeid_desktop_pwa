@@ -9,8 +9,6 @@ import classes from "./style.module.css";
 const AddressRaw: FC<AddressProps> = (props) => {
   const { address, number } = props;
 
-  //г. , ул. Берестянская, Дом 5, кв. 22
-
   const renderAddress = useMemo(() => {
     const { street, building, city } = address;
     let str = "";
