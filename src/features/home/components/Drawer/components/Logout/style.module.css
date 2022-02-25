@@ -1,0 +1,15 @@
+.logout {
+  display: block;
+  width: 100%;
+  margin-top: auto;
+
+  border: 0.2rem solid var(--red);
+  border-radius: 1rem;
+  padding: 1.5rem 1rem;
+  color: var(--red);
+}
+
+.logout:hover {
+  background-color: var(--red);
+  color: #fff;
+}

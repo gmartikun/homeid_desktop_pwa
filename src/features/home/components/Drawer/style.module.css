@@ -1,0 +1,36 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  cursor: pointer;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -30rem;
+  bottom: 0;
+  z-index: 11;
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #849cf3;
+  border-radius: 1rem 0 0 1rem;
+  transition: 0.3s;
+}
+.drawer.opened {
+  right: 0;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #ebebeb;
+  border-radius: 1rem;
+  padding: 1rem;
+}

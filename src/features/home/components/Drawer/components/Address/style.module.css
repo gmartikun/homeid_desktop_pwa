@@ -1,0 +1,22 @@
+.address {
+  height: 18rem;
+  position: relative;
+  padding-top: 5.2rem;
+}
+
+.address span {
+  font-size: 1.6rem;
+  line-height: 1.1;
+  text-align: center;
+  display: block;
+  color: #fff;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.bgImg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}

@@ -1,0 +1,66 @@
+@import-normalize;
+
+* {
+  box-sizing: border-box;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:root {
+  --main: #113fe2;
+  --main-hover: #0f36c1;
+  --red: #eb5757;
+  --green: #27ae60;
+  --gray: #828282;
+  --gray-light: #e0e0e0;
+}
+
+html,
+body,
+#root {
+  min-height: 100vh;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-width: 32rem;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  background-color: var(--main);
+  margin: 0 auto;
+}
+
+input,
+button {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}

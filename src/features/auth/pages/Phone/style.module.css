@@ -1,0 +1,101 @@
+.layout {
+  position: relative;
+  max-width: 45rem;
+  min-width: 37.5rem;
+  margin: auto auto 3rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  padding: 3rem 2rem;
+}
+
+.title {
+  color: var(--main);
+  font-weight: bold;
+  font-size: 3.6rem;
+  line-height: 4rem;
+}
+
+.desc {
+  display: block;
+  margin-top: 2.4rem;
+  color: var(--gray);
+}
+
+.field {
+  position: relative;
+  margin-top: 2.4rem;
+}
+
+.input {
+  width: 100%;
+  border: 0.2rem solid var(--gray-light);
+  border-radius: 1rem;
+  height: 5rem;
+  padding: 0 1.6rem;
+}
+
+.inputFill,
+.input:focus {
+  border-color: var(--main);
+}
+
+.inputError,
+.inputError:focus {
+  border-color: var(--red);
+}
+
+.inputErrorText {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  color: var(--red);
+}
+
+.commonError {
+  padding: 1rem;
+  background-color: var(--red);
+  border-radius: 1rem;
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 5rem;
+  background-color: var(--main);
+  border-radius: 1rem;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  border: 0.2rem solid transparent;
+  padding: 1.4rem 1rem;
+}
+
+.btn:hover {
+  background-color: var(--main-hover);
+}
+
+.btn:disabled {
+  background-color: #fff;
+  border-color: var(--gray-light);
+  color: var(--gray);
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,10 @@
+.call {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.callVideo {
+  width: 100%;
+}

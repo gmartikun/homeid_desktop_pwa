@@ -1,0 +1,21 @@
+.header {
+  padding: 3rem;
+  font-size: 0;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header svg {
+  display: block;
+}
+
+.logo {
+  width: 10rem;
+}
+
+.info {
+  width: 5rem;
+}

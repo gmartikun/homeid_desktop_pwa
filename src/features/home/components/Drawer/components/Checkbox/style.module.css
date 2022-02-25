@@ -1,0 +1,55 @@
+.checkbox {
+  background-color: #fff;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.checkbox:last-child {
+  margin-bottom: 0;
+}
+
+.checkboxInput {
+  position: absolute;
+  visibility: hidden;
+}
+
+.checkboxInput:checked + .checkboxLabel:before {
+  background-color: #6fcf97;
+}
+
+.checkboxInput:checked + .checkboxLabel:after {
+  right: 1.7rem;
+}
+
+.checkboxLabel {
+  display: block;
+  position: relative;
+  padding-right: 4rem;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  color: #5f5f5f;
+  padding: 1.5rem;
+  cursor: pointer;
+}
+
+.checkboxLabel:before {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3.4rem;
+  height: 1.6rem;
+  border-radius: 1rem;
+  background-color: #d9d9d9;
+}
+
+.checkboxLabel:after {
+  content: "";
+  position: absolute;
+  top: 1.6rem;
+  right: 3.3rem;
+  background-color: #fff;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+}

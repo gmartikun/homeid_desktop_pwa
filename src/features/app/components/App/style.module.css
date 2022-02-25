@@ -1,0 +1,21 @@
+.error {
+  margin: auto;
+
+  background-color: var(--red);
+  padding: 2rem;
+  border-radius: 1rem;
+  color: #fff;
+  width: 35rem;
+  text-align: center;
+}
+
+.errorTitle {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  line-height: 2.4rem;
+}
+
+.errorDesc {
+  line-height: 2.2rem;
+}

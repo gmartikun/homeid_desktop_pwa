@@ -1,0 +1,85 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 -2.5rem 0;
+  max-width: 60rem;
+}
+
+.col {
+  width: 25%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colMain {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colMain:last-child {
+  margin-bottom: 0;
+}
+
+.btnMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 1px 5px 12px 5px rgba(0, 0, 0, 0.24);
+  width: 26rem;
+  height: 26rem;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.btnMain span {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  color: #fff;
+  font-weight: normal;
+  margin-top: 1.6rem;
+}
+
+.btnMain:hover {
+  box-shadow: 1px 5px 12px 5px rgba(0, 0, 0, 0.35);
+}
+
+.btnCommon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btnCommonIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+
+  width: 11.4rem;
+  height: 11.4rem;
+  background: #113fe2;
+  box-shadow: 0.1rem 0.5rem 1.2rem 0.5rem rgba(0, 0, 0, 0.25);
+  border-radius: 2rem;
+}
+
+.btnCommonText {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: #fff;
+  font-weight: normal;
+  margin-top: 1.6rem;
+}
+
+.btnCommon:hover .btnCommonIcon {
+  box-shadow: 0.1rem 0.5rem 1.2rem 0.5rem rgba(0, 0, 0, 0.35);
+}
