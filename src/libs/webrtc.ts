@@ -14,12 +14,13 @@ const configuration = {
 
 export const init = () => {
   pc = new RTCPeerConnection(configuration);
+  return pc;
 };
 
 export const start = async () => {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({
-      audio: true,
+      audio: false,
       video: false,
     });
     stream.getTracks().forEach((track) => pc?.addTrack(track, stream));
@@ -28,8 +29,6 @@ export const start = async () => {
     throw new Error("WebRtc start failure");
   }
 };
-
-export const getPC = () => pc;
 
 export const close = () => {
   if (localStream) localStream.getTracks().forEach((track) => track.stop());

@@ -6,7 +6,6 @@ import cn from "classnames";
 import axios from "@src/axios";
 
 import { useUser } from "@src/hooks";
-import { CustomHeaders } from "@src/types";
 import { getBrowserName, getSubscription } from "@src/services";
 
 import CtxLoader from "@src/components/CtxLoader";
@@ -43,7 +42,7 @@ const AuthSmsRaw: FC = () => {
             otp: value,
           });
 
-          (axios.defaults.headers as CustomHeaders)["Authorization"] = token;
+          axios.defaults.headers.common["Authorization"] = token;
 
           updateUser({ token, centrifugo_token, user_id });
 

@@ -9,7 +9,7 @@ import {
 } from "react";
 
 import axios from "@src/axios";
-import { TpUser, CustomHeaders } from "@src/types";
+import { TpUser } from "@src/types";
 
 import { AuthContext } from "../contexts";
 import { useLogoutUser } from "../hooks";
@@ -52,6 +52,7 @@ const AuthProviderRaw: FC<AuthProps> = (props) => {
       setUser(default_user);
       localStorage.removeItem("user");
       localStorage.removeItem("user-settings");
+      delete axios.defaults.headers.common["Authorization"];
     } catch (e) {
       console.warn("Logout user error");
     }
@@ -71,7 +72,7 @@ const AuthProviderRaw: FC<AuthProps> = (props) => {
     if (savedUser) {
       const user: TpUser = JSON.parse(savedUser);
       if (user.token) {
-        (axios.defaults.headers as CustomHeaders)["Authorization"] = user.token;
+        axios.defaults.headers.common["Authorization"] = user.token;
       }
       setUser({
         ...default_user,
@@ -79,7 +80,7 @@ const AuthProviderRaw: FC<AuthProps> = (props) => {
       });
     }
 
-    // (axios.defaults.headers as CustomHeaders)["Authorization"] =
+    // axios.defaults.headers.common["Authorization"] =
     //   "fLFUnfksXTQk3n4+rcc/yvWVOX2cUD6psOhqH5xCslGnh4ENCDjq7kCOjW7Ef2ufZ+lLPiZLxqw1MMqedK3j6w==";
 
     // setUser({

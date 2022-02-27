@@ -88,12 +88,10 @@ const CallRaw: FC = () => {
 
   useEffect(() => {
     if (canSubscribe) {
-      webrtc.init();
+      const pc = webrtc.init();
       webrtc
         .start()
         .then(() => {
-          const pc = webrtc.getPC();
-
           const onIceCandidate = (event: any) => {
             if (event.candidate) {
               centrifuge.send(channel, {
@@ -120,11 +118,11 @@ const CallRaw: FC = () => {
             }
           };
 
-          pc?.addEventListener("icecandidate", onIceCandidate);
-          pc?.addEventListener("signalingstatechange", onSignalingStateChange);
-          pc?.addEventListener("track", onTrack);
+          pc.addEventListener("icecandidate", onIceCandidate);
+          pc.addEventListener("signalingstatechange", onSignalingStateChange);
+          pc.addEventListener("track", onTrack);
 
-          pc?.createOffer({
+          pc.createOffer({
             offerToReceiveVideo: true,
             offerToReceiveAudio: true,
           }).then((offer) => {
@@ -151,7 +149,7 @@ const CallRaw: FC = () => {
             } else {
               if (data.event === "answer" && data.sender !== "mobile") {
                 const { event, ...answer } = data;
-                pc?.setRemoteDescription(answer);
+                pc.setRemoteDescription(answer);
               }
               if (
                 data.event === "candidate" &&
@@ -159,7 +157,7 @@ const CallRaw: FC = () => {
                 data.sender !== "mobile"
               ) {
                 const { event, sender, ...candidate } = data;
-                await pc?.addIceCandidate(candidate);
+                await pc.addIceCandidate(candidate);
               }
             }
           });
