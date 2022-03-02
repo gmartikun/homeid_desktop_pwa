@@ -127,8 +127,13 @@ self.addEventListener("notificationclick", (event) => {
       .then(function (clientList: any) {
         for (var i = 0; i < clientList.length; i++) {
           var client = clientList[i];
+
+          console.log("client", client);
+
           if (client.url.includes("localhost:3001")) {
-            client.focus();
+            if (!client.focused) {
+              client.focus();
+            }
             return client.navigate(url);
           }
         }
