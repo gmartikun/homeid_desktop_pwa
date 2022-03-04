@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/homeid_desktop_pwa/static/css/main.38c6bd95.css",
-    "main.js": "/homeid_desktop_pwa/static/js/main.f5c19756.js",
+    "main.js": "/homeid_desktop_pwa/static/js/main.1a57f533.js",
     "service-worker.js": "/homeid_desktop_pwa/service-worker.js",
     "static/media/addressBg.png": "/homeid_desktop_pwa/static/media/addressBg.8fda1fd4a9639c78d9dc.png",
     "static/media/notify-error.svg": "/homeid_desktop_pwa/static/media/notify-error.224e2ca9df10c2b491a4beb808199187.svg",
@@ -20,10 +20,10 @@
     "static/media/door-large.svg": "/homeid_desktop_pwa/static/media/door-large.bea81e695e38e0d5ea03523987adc29f.svg",
     "static/media/cancel.svg": "/homeid_desktop_pwa/static/media/cancel.b7972046e7e93263d1574d36dafcf366.svg",
     "main.38c6bd95.css.map": "/homeid_desktop_pwa/static/css/main.38c6bd95.css.map",
-    "main.f5c19756.js.map": "/homeid_desktop_pwa/static/js/main.f5c19756.js.map"
+    "main.1a57f533.js.map": "/homeid_desktop_pwa/static/js/main.1a57f533.js.map"
   },
   "entrypoints": [
     "static/css/main.38c6bd95.css",
-    "static/js/main.f5c19756.js"
+    "static/js/main.1a57f533.js"
   ]
 }
