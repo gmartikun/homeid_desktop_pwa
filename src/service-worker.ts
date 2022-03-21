@@ -90,58 +90,63 @@ self.addEventListener("push", (event) => {
 });
 
 //PROD
-// self.addEventListener("notificationclick", (event) => {
-//   const { data } = event.notification;
-//   const url = `https://homeid/web/home/call?callUuid=${data.callUuid}&panel_id=${data.panelId}`;
-//   event.notification.close();
-//   event.waitUntil(
-//     self.clients
-//       .matchAll({
-//         type: "window",
-//       })
-//       .then(function (clientList: any) {
-//         for (var i = 0; i < clientList.length; i++) {
-//           var client = clientList[i];
-//           if (client.url.includes("homeid")) {
-//             client.focus();
-//             return client.navigate(url);
-//           }
-//         }
-//         if (self.clients.openWindow) {
-//           return self.clients.openWindow(url);
-//         }
-//       })
-//   );
-// });
-
-//DEV
 self.addEventListener("notificationclick", (event) => {
   const { data } = event.notification;
-  const url = `http://localhost:3001/home/call?callUuid=${data.callUuid}&panel_id=${data.panelId}`;
+  let matchingClient: WindowClient | null = null;
+  const url = `https://web.gmar.by/home/call?callUuid=${data.callUuid}&panel_id=${data.panelId}`;
   event.notification.close();
   event.waitUntil(
     self.clients
       .matchAll({
         type: "window",
       })
-      .then(function (clientList: any) {
-        for (var i = 0; i < clientList.length; i++) {
-          var client = clientList[i];
-
-          console.log("client", client);
-
-          if (client.url.includes("localhost:3001")) {
-            if (!client.focused) {
-              client.focus();
-            }
-            return client.navigate(url);
+      .then(function (clientList) {
+        for (let i = 0; i < clientList.length; i++) {
+          const client = clientList[i];
+          if (client.url.includes("web.gmar.by")) {
+            matchingClient = client;
+            break;
           }
         }
-        if (self.clients.openWindow) {
+
+        if (matchingClient) {
+          matchingClient.focus();
+          return matchingClient.navigate(url);
+        } else if (self.clients.openWindow) {
           return self.clients.openWindow(url);
         }
       })
   );
 });
+
+//DEV
+// self.addEventListener("notificationclick", (event) => {
+//   const { data } = event.notification;
+//   let matchingClient: WindowClient | null = null;
+//   const url = `http://localhost:3001/home/call?callUuid=${data.callUuid}&panel_id=${data.panelId}`;
+//   event.notification.close();
+//   event.waitUntil(
+//     self.clients
+//       .matchAll({
+//         type: "window",
+//       })
+//       .then(function (clientList) {
+//         for (let i = 0; i < clientList.length; i++) {
+//           const client = clientList[i];
+//           if (client.url.includes("localhost:3001")) {
+//             matchingClient = client;
+//             break;
+//           }
+//         }
+
+//         if (matchingClient) {
+//           matchingClient.focus();
+//           return matchingClient.navigate(url);
+//         } else if (self.clients.openWindow) {
+//           return self.clients.openWindow(url);
+//         }
+//       })
+//   );
+// });
 
 // Any other custom service worker logic can go here.
