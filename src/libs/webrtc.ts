@@ -20,7 +20,7 @@ export const init = () => {
 export const start = async () => {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({
-      audio: false,
+      audio: true,
       video: false,
     });
     stream.getTracks().forEach((track) => pc?.addTrack(track, stream));

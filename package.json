@@ -1,12 +1,14 @@
 {
   "name": "homeid_desktop_pwa",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "https://web.gmar.by/",
+  "private": false,
   "dependencies": {
     "axios": "^0.24.0",
     "centrifuge": "^2.8.4",
     "classnames": "^2.3.1",
     "date-fns": "^2.28.0",
+    "gh-pages": "^3.2.3",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -30,6 +32,8 @@
     "workbox-streams": "^5.1.3"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test"
