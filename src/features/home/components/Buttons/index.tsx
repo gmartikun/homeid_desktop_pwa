@@ -7,6 +7,7 @@ import { ReactComponent as DoorIcon } from "../../assets/door.svg";
 import { ReactComponent as BasementIcon } from "../../assets/basement.svg";
 import { ReactComponent as BikeIcon } from "../../assets/bike.svg";
 import { ReactComponent as BarrierIcon } from "../../assets/barrier.svg";
+import { ReactComponent as Gateicon } from "../../assets/gate.svg";
 
 import classes from "./style.module.css";
 
@@ -15,6 +16,7 @@ const icons: Record<string, any> = {
   basement: BasementIcon,
   bike: BikeIcon,
   barrier: BarrierIcon,
+  gate: Gateicon,
 };
 
 const ButtonsRaw: FC<ButtonsProps> = (props) => {
@@ -38,7 +40,7 @@ const ButtonsRaw: FC<ButtonsProps> = (props) => {
       );
     }
 
-    const Icon = icons[icon_type];
+    const Icon = icons[icon_type] || DoorIcon;
 
     return (
       <div className={classes.col} key={internal_id}>
