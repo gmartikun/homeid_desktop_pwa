@@ -31,7 +31,7 @@ const CallRaw: FC = () => {
   const callUuid = query.get("callUuid");
   const panel_id = query.get("panel_id");
 
-  const channel = useMemo(() => `calls_${callUuid}`, [callUuid]);
+  const channel = `calls_${callUuid}`;
   const [canSubscribe, setCanSubscribe] = useState(false);
   const [callStatus, setCallStatus] = useState<EmCallEvents | "">("");
 
@@ -122,18 +122,9 @@ const CallRaw: FC = () => {
           pc.addEventListener("signalingstatechange", onSignalingStateChange);
           pc.addEventListener("track", onTrack);
 
-          pc.createOffer({
-            offerToReceiveVideo: true,
-            offerToReceiveAudio: true,
-          }).then((offer) => {
-            pc.setLocalDescription(offer).then(() => {
-              centrifuge.send(channel, {
-                sender: "mobile",
-                event: "offer",
-                type: offer.type,
-                sdp: offer.sdp,
-              });
-            });
+          centrifuge.send(channel, {
+            sender: "mobile",
+            event: "register",
           });
 
           centrifuge.signed(channel).on("publish", async ({ data }: any) => {
@@ -147,16 +138,30 @@ const CallRaw: FC = () => {
               });
               navigate("/home", { replace: true });
             } else {
-              if (data.event === "answer" && data.sender !== "mobile") {
-                const { event, ...answer } = data;
-                pc.setRemoteDescription(answer);
+              if (data.event === "offer" && data.sender !== "mobile") {
+                if (data.sdp) {
+                  const sdp = { sdp: data.sdp, type: data.type };
+                  await pc.setRemoteDescription(sdp);
+                  const answer = await pc.createAnswer();
+
+                  centrifuge.send(channel, {
+                    sender: "mobile",
+                    event: "answer",
+                    type: answer.type,
+                    sdp: answer.sdp,
+                  });
+                }
               }
               if (
                 data.event === "candidate" &&
                 data.candidate &&
                 data.sender !== "mobile"
               ) {
-                const { event, sender, ...candidate } = data;
+                const candidate = {
+                  candidate: data.candidate,
+                  sdpMLineIndex: data.sdpMLineIndex,
+                  sdpMid: data.sdpMid,
+                };
                 await pc.addIceCandidate(candidate);
               }
             }
